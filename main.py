@@ -49,7 +49,7 @@ def createHW():
 
 @app.get("/hw")
 @limiter.limit("1 per second")
-def createHW():
+def getHW():
     conn = sqlite3.connect('gifts.db')
     cursor = conn.cursor()
     cursor.execute('SELECT id, name, class FROM gifts')
