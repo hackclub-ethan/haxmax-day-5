@@ -28,7 +28,7 @@ async function loadThings() {
 
     hwContainer.innerHTML = "";
     
-    hw.array.forEach(element => {
+    hw.forEach(element => {
         const item = document.createElement("p");
         item.textContent = `${element.class}: ${element.name}`;
         hwContainer.appendChild(item);

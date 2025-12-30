@@ -37,13 +37,14 @@ def index():
 @limiter.limit("1 per second")
 def createHW():
     data = flask.request.get_json()
-    name = date.get("name")
+    name = data.get("name")
     schoolClass = data.get("class")
 
-    conn = sqlite3.connect("gifts.db")
+    conn = sqlite3.connect("gifts.db", check_same_thread=False)
+    cursor = conn.cursor()
     cursor.execute('INSERT INTO gifts (name, class) VALUES (?, ?)', (name, schoolClass))
     conn.commit()
-    con.close()
+    conn.close()
 
     return "", 201
 
